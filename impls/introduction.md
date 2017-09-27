@@ -1,2 +1,3 @@
-> ![warning](../sources/images/warning-3.gif)SPI使用范围    
-> 扩展接口仅用于系统集成，或Contributor扩展功能插件。
+# SPI 扩展实现
+
+SPI 扩展接口仅用于系统集成，或 Contributor 扩展功能插件。
