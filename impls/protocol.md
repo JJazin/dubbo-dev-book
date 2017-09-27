@@ -2,7 +2,7 @@
 
 ## 扩展说明
 
-RPC协议扩展，封装远程调用细节。
+RPC 协议扩展，封装远程调用细节。
 
 契约：
 
@@ -14,7 +14,7 @@ RPC协议扩展，封装远程调用细节。
 * 协议不关心业务接口的透明代理，以 `Invoker` 为中心，由外层将 `Invoker` 转换为业务接口。
 * 协议不一定要是 TCP 网络通讯，比如通过共享文件，IPC 进程间通讯等。
 
-##### 2. 扩展接口：
+## 扩展接口
 
 * `com.alibaba.dubbo.rpc.Protocol`
 * `com.alibaba.dubbo.rpc.Exporter`
@@ -52,15 +52,18 @@ public interface Protocol {
 }
 ```
 
-##### 3. 扩展配置：
+## 扩展配置
 
 ```xml
-<dubbo:protocol id="xxx1" name="xxx" /> <!-- 声明协议，如果没有配置id，将以name为id -->
-<dubbo:service protocol="xxx1" /> <!-- 引用协议，如果没有配置protocol属性，将在ApplicationContext中自动扫描protocol配置 -->
-<dubbo:provider protocol="xxx1" /> <!-- 引用协议缺省值，当<dubbo:service>没有配置prototol属性时，使用此配置 -->
+<!-- 声明协议，如果没有配置id，将以name为id -->
+<dubbo:protocol id="xxx1" name="xxx" />
+<!-- 引用协议，如果没有配置protocol属性，将在ApplicationContext中自动扫描protocol配置 -->
+<dubbo:service protocol="xxx1" />
+<!-- 引用协议缺省值，当<dubbo:service>没有配置prototol属性时，使用此配置 -->
+<dubbo:provider protocol="xxx1" />
 ```
 
-##### 4. 已知扩展：
+## 已知扩展
 
 * `com.alibaba.dubbo.rpc.injvm.InjvmProtocol`
 * `com.alibaba.dubbo.rpc.dubbo.DubboProtocol`
@@ -68,9 +71,9 @@ public interface Protocol {
 * `com.alibaba.dubbo.rpc.http.HttpProtocol`
 * `com.alibaba.dubbo.rpc.http.hessian.HessianProtocol`
 
-##### 5. 扩展示例：
+## 扩展示例
 
-Maven项目结构
+Maven项目结构：
 
 ```
 
@@ -88,7 +91,7 @@ src
                 |-com.alibaba.dubbo.rpc.Protocol (纯文本文件，内容为：xxx=com.xxx.XxxProtocol)
 ```
 
-XxxProtocol.java
+XxxProtocol.java：
 
 ```java
 package com.xxx;
@@ -105,7 +108,7 @@ public class XxxProtocol implements Protocol {
 }
 ```
 
-XxxExporter.java
+XxxExporter.java：
 
 ```java
 package com.xxx;
@@ -124,7 +127,7 @@ public class XxxExporter<T> extends AbstractExporter<T> {
 }
 ```
 
-XxxInvoker.java
+XxxInvoker.java：
 
 ```java
 package com.xxx;
@@ -141,7 +144,7 @@ public class XxxInvoker<T> extends AbstractInvoker<T> {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.rpc.Protocol
+META-INF/dubbo/com.alibaba.dubbo.rpc.Protocol：
 
 ```
 xxx=com.xxx.XxxProtocol
