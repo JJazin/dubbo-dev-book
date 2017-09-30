@@ -1,28 +1,31 @@
-##### 1. 扩展说明
+# 页面扩展
+
+## 扩展说明
 
 对等网络节点组网器。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.container.page.PageHandler`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:protocol page="xxx,yyy" />
-<dubbo:provider page="xxx,yyy" /> <!-- 缺省值设置，当<dubbo:protocol>没有配置page属性时，使用此配置 -->
+<!-- 缺省值设置，当<dubbo:protocol>没有配置page属性时，使用此配置 -->
+<dubbo:provider page="xxx,yyy" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.container.page.pages.HomePageHandler`
 * `com.alibaba.dubbo.container.page.pages.StatusPageHandler`
 * `com.alibaba.dubbo.container.page.pages.LogPageHandler`
 * `com.alibaba.dubbo.container.page.pages.SystemPageHandler`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -37,7 +40,7 @@ src
                 |-com.alibaba.dubbo.container.page.PageHandler (纯文本文件，内容为：xxx=com.xxx.XxxPageHandler)
 ```
 
-XxxPageHandler.java
+XxxPageHandler.java：
 
 ```java
 package com.xxx;
@@ -51,8 +54,8 @@ public class XxxPageHandler implements PageHandler {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.container.page.PageHandler
+META-INF/dubbo/com.alibaba.dubbo.container.page.PageHandler：
 
-```
+```properties
 xxx=com.xxx.XxxPageHandler
 ```

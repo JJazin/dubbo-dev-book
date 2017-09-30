@@ -1,23 +1,25 @@
-##### 1. 扩展说明
+# 编译器扩展
+
+## 扩展说明
 
 Java 代码编译器，用于动态生成字节码，加速调用。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.common.compiler.Compiler`
 
-##### 3. 扩展配置
+## 扩展配置
 
 自动加载
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.common.compiler.support.JdkCompiler`
 * `com.alibaba.dubbo.common.compiler.support.JavassistCompiler`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -32,7 +34,7 @@ src
                 |-com.alibaba.dubbo.common.compiler.Compiler (纯文本文件，内容为：xxx=com.xxx.XxxCompiler)
 ```
 
-XxxCompiler.java
+XxxCompiler.java：
 
 ```java
 package com.xxx;
@@ -46,8 +48,8 @@ public class XxxCompiler implements Compiler {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.common.compiler.Compiler
+META-INF/dubbo/com.alibaba.dubbo.common.compiler.Compiler：
 
-```
+```properties
 xxx=com.xxx.XxxCompiler
 ```

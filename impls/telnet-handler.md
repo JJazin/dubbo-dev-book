@@ -1,19 +1,22 @@
-##### 1. 扩展说明
+# Telnet 命令扩展
+
+## 扩展说明
 
 所有服务器均支持 telnet 访问，用于人工干预。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.remoting.telnet.TelnetHandler`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:protocol telnet="xxx,yyy" />
-<dubbo:provider telnet="xxx,yyy" /> <!-- 缺省值设置，当<dubbo:protocol>没有配置telnet属性时，使用此配置 -->
+<!-- 缺省值设置，当<dubbo:protocol>没有配置telnet属性时，使用此配置 -->
+<dubbo:provider telnet="xxx,yyy" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.remoting.telnet.support.ClearTelnetHandler`
 * `com.alibaba.dubbo.remoting.telnet.support.ExitTelnetHandler`
@@ -27,9 +30,9 @@
 * `com.alibaba.dubbo.rpc.dubbo.telnet.CountTelnetHandler`
 * `com.alibaba.dubbo.rpc.dubbo.telnet.PortTelnetHandler`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -44,7 +47,7 @@ src
                 |-com.alibaba.dubbo.remoting.telnet.TelnetHandler (纯文本文件，内容为：xxx=com.xxx.XxxTelnetHandler)
 ```
 
-XxxTelnetHandler.java
+XxxTelnetHandler.java：
 
 ```java
 package com.xxx;
@@ -60,13 +63,13 @@ public class XxxTelnetHandler implements TelnetHandler {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.remoting.telnet.TelnetHandler
+META-INF/dubbo/com.alibaba.dubbo.remoting.telnet.TelnetHandler：
 
-```
+```properties
 xxx=com.xxx.XxxTelnetHandler
 ```
 
-用法
+## 用法
 
 ```sh
 telnet 127.0.0.1 20880

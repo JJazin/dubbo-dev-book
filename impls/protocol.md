@@ -146,6 +146,6 @@ public class XxxInvoker<T> extends AbstractInvoker<T> {
 
 META-INF/dubbo/com.alibaba.dubbo.rpc.Protocol：
 
-```
+```properties
 xxx=com.xxx.XxxProtocol
 ```

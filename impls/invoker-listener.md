@@ -1,25 +1,29 @@
-##### 1. 扩展说明
+# 引用监听扩展
+
+## 扩展说明
 
 当有服务引用时，触发该事件。
 
-##### 2.  扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.rpc.InvokerListener`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
-<dubbo:reference listener="xxx,yyy" /> <!-- 引用服务监听 -->
-<dubbo:consumer listener="xxx,yyy" /> <!-- 引用服务缺省监听器 -->
+<!-- 引用服务监听 -->
+<dubbo:reference listener="xxx,yyy" /> 
+<!-- 引用服务缺省监听器 -->
+<dubbo:consumer listener="xxx,yyy" /> 
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 `com.alibaba.dubbo.rpc.listener.DeprecatedInvokerListener`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -34,7 +38,7 @@ src
                 |-com.alibaba.dubbo.rpc.InvokerListener (纯文本文件，内容为：xxx=com.xxx.XxxInvokerListener)
 ```
 
-XxxInvokerListener.java
+XxxInvokerListener.java：
 
 ```java
 package com.xxx;
@@ -42,7 +46,6 @@ package com.xxx;
 import com.alibaba.dubbo.rpc.InvokerListener;
 import com.alibaba.dubbo.rpc.Invoker;
 import com.alibaba.dubbo.rpc.RpcException;
- 
  
 public class XxxInvokerListener implements InvokerListener {
     public void referred(Invoker<?> invoker) throws RpcException {
@@ -54,8 +57,8 @@ public class XxxInvokerListener implements InvokerListener {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.rpc.InvokerListener
+META-INF/dubbo/com.alibaba.dubbo.rpc.InvokerListener：
 
-```
+```properties
 xxx=com.xxx.XxxInvokerListener
 ```

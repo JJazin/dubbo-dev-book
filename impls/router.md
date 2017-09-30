@@ -1,27 +1,30 @@
-##### 1. 扩展说明
+# 路由扩展
+
+## 扩展说明
 
 从多个服务提者方中选择一个进行调用。
 
-##### 2. 扩展接口
+## 扩展接口
 
 * `com.alibaba.dubbo.rpc.cluster.RouterFactory`
 * `com.alibaba.dubbo.rpc.cluster.Router`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:protocol router="xxx" />
-<dubbo:provider router="xxx" /> <!-- 缺省值设置，当<dubbo:protocol>没有配置loadbalance时，使用此配置 -->
+<!-- 缺省值设置，当<dubbo:protocol>没有配置loadbalance时，使用此配置 -->
+<dubbo:provider router="xxx" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.rpc.cluster.router.ScriptRouterFactory`
 * `com.alibaba.dubbo.rpc.cluster.router.FileRouterFactory`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -37,7 +40,7 @@ src
 
 ```
 
-> XxxRouterFactory.java
+XxxRouterFactory.java：
 
 ```java
 package com.xxx;
@@ -54,8 +57,8 @@ public class XxxRouterFactory implements RouterFactory {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.rpc.cluster.RouterFactory
+META-INF/dubbo/com.alibaba.dubbo.rpc.cluster.RouterFactory：
 
-```
+```properties
 xxx=com.xxx.XxxRouterFactory
 ```

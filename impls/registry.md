@@ -1,23 +1,28 @@
-##### 1. 扩展说明
+# 注册中心扩展
+
+## 扩展说明
 
 负责服务的注册与发现。
 
-##### 2. 扩展接口
+## 扩展接口
 
 * `com.alibaba.dubbo.registry.RegistryFactory`
 * `com.alibaba.dubbo.registry.Registry`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
-<dubbo:registry id="xxx1" address="xxx://ip:port" /> <!-- 定义注册中心 -->
-<dubbo:service registry="xxx1" /> <!-- 引用注册中心，如果没有配置registry属性，将在ApplicationContext中自动扫描registry配置 -->
-<dubbo:provider registry="xxx1" /> <!-- 引用注册中心缺省值，当<dubbo:service>没有配置registry属性时，使用此配置 -->
+<!-- 定义注册中心 -->
+<dubbo:registry id="xxx1" address="xxx://ip:port" />
+<!-- 引用注册中心，如果没有配置registry属性，将在ApplicationContext中自动扫描registry配置 -->
+<dubbo:service registry="xxx1" />
+<!-- 引用注册中心缺省值，当<dubbo:service>没有配置registry属性时，使用此配置 -->
+<dubbo:provider registry="xxx1" />
 ```
 
-##### 4. 扩展契约
+## 扩展契约
 
-RegistryFactory.java
+RegistryFactory.java：
 
 ```java
 public interface RegistryFactory {
@@ -39,7 +44,7 @@ public interface RegistryFactory {
 }
 ```
 
-RegistryService.java
+RegistryService.java：
 
 ```java
 public interface RegistryService { // Registry extends RegistryService 
@@ -109,7 +114,7 @@ public interface RegistryService { // Registry extends RegistryService
 }
 ```
 
-NotifyListener.java
+NotifyListener.java：
 
 ```java
 public interface NotifyListener { 
@@ -130,13 +135,13 @@ public interface NotifyListener {
 }
 ```
 
-##### 5. 已知扩展
+## 已知扩展
 
 `com.alibaba.dubbo.registry.support.dubbo.DubboRegistryFactory`
 
-##### 6. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -152,7 +157,7 @@ src
                 |-com.alibaba.dubbo.registry.RegistryFactory (纯文本文件，内容为：xxx=com.xxx.XxxRegistryFactory)
 ```
 
-XxxRegistryFactory.java
+XxxRegistryFactory.java：
 
 ```java
 package com.xxx;
@@ -168,7 +173,7 @@ public class XxxRegistryFactory implements RegistryFactory {
 }
 ```
 
-XxxRegistry.java
+XxxRegistry.java：
 
 ```java
 package com.xxx;
@@ -193,8 +198,8 @@ public class XxxRegistry implements Registry {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.registry.RegistryFactory
+META-INF/dubbo/com.alibaba.dubbo.registry.RegistryFactory：
 
-```
+```properties
 xxx=com.xxx.XxxRegistryFactory
 ```

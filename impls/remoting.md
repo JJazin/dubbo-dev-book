@@ -1,30 +1,35 @@
-##### 1. 扩展说明
+# 网络传输扩展
+
+## 扩展说明
 
 远程通讯的服务器及客户端传输实现。
 
-##### 2. 扩展接口
+## 扩展接口
 
 * `com.alibaba.dubbo.remoting.Transporter`
 * `com.alibaba.dubbo.remoting.Server`
 * `com.alibaba.dubbo.remoting.Client`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
-<dubbo:protocol transporter="xxx" /> <!-- 服务器和客户端使用相同的传输实现 -->
-<dubbo:protocol server="xxx" client="xxx" /> <!-- 服务器和客户端使用不同的传输实现 -->
-<dubbo:provider transporter="xxx" server="xxx" client="xxx" /> <!-- 缺省值设置，当<dubbo:protocol>没有配置transporter/server/client属性时，使用此配置 -->
+<!-- 服务器和客户端使用相同的传输实现 -->
+<dubbo:protocol transporter="xxx" /> 
+<!-- 服务器和客户端使用不同的传输实现 -->
+<dubbo:protocol server="xxx" client="xxx" /> 
+<!-- 缺省值设置，当<dubbo:protocol>没有配置transporter/server/client属性时，使用此配置 -->
+<dubbo:provider transporter="xxx" server="xxx" client="xxx" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.remoting.transport.transporter.netty.NettyTransporter`
 * `com.alibaba.dubbo.remoting.transport.transporter.mina.MinaTransporter`
 * `com.alibaba.dubbo.remoting.transport.transporter.grizzly.GrizzlyTransporter`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -41,7 +46,7 @@ src
                 |-com.alibaba.dubbo.remoting.Transporter (纯文本文件，内容为：xxx=com.xxx.XxxTransporter)
 ```
 
-XxxTransporter.java
+XxxTransporter.java：
 
 ```java
 package com.xxx;
@@ -58,7 +63,7 @@ public class XxxTransporter implements Transporter {
 }
 ```
 
-XxxServer.java
+XxxServer.java：
 
 ```java
 package com.xxx;
@@ -84,7 +89,7 @@ public class XxxServer extends AbstractServer {
 }
 ```
 
-XxxClient.java
+XxxClient.java：
 
 ```java
 package com.xxx;
@@ -110,8 +115,8 @@ public class XxxClient extends AbstractClient {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.remoting.Transporter
+META-INF/dubbo/com.alibaba.dubbo.remoting.Transporter：
 
-```
+```properties
 xxx=com.xxx.XxxTransporter
 ```

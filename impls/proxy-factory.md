@@ -1,26 +1,29 @@
-##### 1. 扩展说明
+# 动态代理扩展
+
+## 扩展说明
 
 将 `Invoker` 接口转换成业务接口。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.rpc.ProxyFactory`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:protocol proxy="xxx" />
-<dubbo:provider proxy="xxx" /> <!-- 缺省值配置，当<dubbo:protocol>没有配置proxy属性时，使用此配置 -->
+<!-- 缺省值配置，当<dubbo:protocol>没有配置proxy属性时，使用此配置 -->
+<dubbo:provider proxy="xxx" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.rpc.proxy.JdkProxyFactory`
 * `com.alibaba.dubbo.rpc.proxy.JavassistProxyFactory`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -35,7 +38,7 @@ src
                 |-com.alibaba.dubbo.rpc.ProxyFactory (纯文本文件，内容为：xxx=com.xxx.XxxProxyFactory)
 ```
 
-XxxProxyFactory.java
+XxxProxyFactory.java：
 
 ```java
 package com.xxx;
@@ -55,8 +58,8 @@ public class XxxProxyFactory implements ProxyFactory {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.rpc.ProxyFactory
+META-INF/dubbo/com.alibaba.dubbo.rpc.ProxyFactory：
 
-```
+```properties
 xxx=com.xxx.XxxProxyFactory
 ```

@@ -1,26 +1,28 @@
-##### 1. 扩展说明
+# 容器扩展
+
+## 扩展说明
 
 服务容器扩展，用于自定义加载内容。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.container.Container`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```sh
 java com.alibaba.dubbo.container.Main spring jetty log4j
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.container.spring.SpringContainer`
 * `com.alibaba.dubbo.container.spring.JettyContainer`
 * `com.alibaba.dubbo.container.spring.Log4jContainer`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -35,7 +37,7 @@ src
                 |-com.alibaba.dubbo.container.Container (纯文本文件，内容为：xxx=com.xxx.XxxContainer)
 ```
 
-XxxContainer.java
+XxxContainer.java：
 
 ```java
 package com.xxx;
@@ -53,8 +55,8 @@ public class XxxContainer implements Container {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.container.Container
+META-INF/dubbo/com.alibaba.dubbo.container.Container：
 
-```
+```properties
 xxx=com.xxx.XxxContainer
 ```

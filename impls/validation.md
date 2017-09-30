@@ -1,25 +1,28 @@
-##### 1. 扩展说明
+# 验证扩展
+
+## 扩展说明
 
 参数验证扩展点。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.validation.Validation`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:service validation="xxx,yyy" />
-<dubbo:provider validation="xxx,yyy" /> <!-- 缺省值设置，当<dubbo:service>没有配置validation属性时，使用此配置 -->
+<!-- 缺省值设置，当<dubbo:service>没有配置validation属性时，使用此配置 -->
+<dubbo:provider validation="xxx,yyy" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 `com.alibaba.dubbo.validation.support.jvalidation.JValidation`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -34,7 +37,7 @@ src
                 |-com.alibaba.dubbo.validation.Validation (纯文本文件，内容为：xxx=com.xxx.XxxValidation)
 ```
 
-> XxxValidation.java
+XxxValidation.java：
 
 ```java
 package com.xxx;
@@ -48,7 +51,7 @@ public class XxxValidation implements Validation {
 }
 ```
 
-XxxValidator.java
+XxxValidator.java：
 
 ```java
 package com.xxx;
@@ -65,8 +68,8 @@ public class XxxValidator implements Validator {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.validation.Validation
+META-INF/dubbo/com.alibaba.dubbo.validation.Validation：
 
-```
+```properties
 xxx=com.xxx.XxxValidation
 ```

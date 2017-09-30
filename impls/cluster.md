@@ -1,19 +1,22 @@
-##### 1. 扩展说明
+# 集群扩展
+
+## 扩展说明
 
 当有多个服务提供方时，将多个服务提供方组织成一个集群，并伪装成一个提供方。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.rpc.cluster.Cluster`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:protocol cluster="xxx" />
-<dubbo:provider cluster="xxx" /> <!-- 缺省值配置，如果<dubbo:protocol>没有配置cluster时，使用此配置 -->
+<!-- 缺省值配置，如果<dubbo:protocol>没有配置cluster时，使用此配置 -->
+<dubbo:provider cluster="xxx" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.rpc.cluster.support.FailoverCluster`
 * `com.alibaba.dubbo.rpc.cluster.support.FailfastCluster`
@@ -22,9 +25,9 @@
 * `com.alibaba.dubbo.rpc.cluster.support.ForkingCluster`
 * `com.alibaba.dubbo.rpc.cluster.support.AvailableCluster`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -39,7 +42,7 @@ src
                 |-com.alibaba.dubbo.rpc.cluster.Cluster (纯文本文件，内容为：xxx=com.xxx.XxxCluster)
 ```
 
-XxxCluster.java
+XxxCluster.java：
 
 ```java
 package com.xxx;
@@ -64,8 +67,8 @@ public class XxxCluster implements Cluster {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.rpc.cluster.Cluster
+META-INF/dubbo/com.alibaba.dubbo.rpc.cluster.Cluster：
 
-```
+```properties
 xxx=com.xxx.XxxCluster
 ```

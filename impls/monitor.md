@@ -1,25 +1,28 @@
-##### 1. 扩展说明
+# 监控中心扩展
+
+## 扩展说明
 
 负责服务调用次和调用时间的监控。
 
-##### 2. 扩展接口
+## 扩展接口
 
 * `com.alibaba.dubbo.monitor.MonitorFactory`
 * `com.alibaba.dubbo.monitor.Monitor`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
-<dubbo:monitor address="xxx://ip:port" /> <!-- 定义监控中心 -->
+<!-- 定义监控中心 -->
+<dubbo:monitor address="xxx://ip:port" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 com.alibaba.dubbo.monitor.support.dubbo.DubboMonitorFactory
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -35,7 +38,7 @@ src
                 |-com.alibaba.dubbo.monitor.MonitorFactory (纯文本文件，内容为：xxx=com.xxx.XxxMonitorFactory)
 ```
 
-XxxMonitorFactory.java
+XxxMonitorFactory.java：
 
 ```java
 package com.xxx;
@@ -51,7 +54,7 @@ public class XxxMonitorFactory implements MonitorFactory {
 }
 ```
 
-XxxMonitor.java
+XxxMonitor.java：
 
 ```java
 package com.xxx;
@@ -65,8 +68,8 @@ public class XxxMonitor implements Monitor {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.monitor.MonitorFactory
+META-INF/dubbo/com.alibaba.dubbo.monitor.MonitorFactory：
 
-```
+```properties
 xxx=com.xxx.XxxMonitorFactory
 ```

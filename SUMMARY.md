@@ -24,7 +24,7 @@
     * [5.17 网络传输扩展](./impls/remoting.md)
     * [5.18 信息交换扩展](./impls/exchanger.md)
     * [5.19 组网扩展](./impls/networker.md)
-    * [5.20 Telnet命令扩展](./impls/telnet-handler.md)
+    * [5.20 Telnet 命令扩展](./impls/telnet-handler.md)
     * [5.21 状态检查扩展](./impls/status-checker.md)
     * [5.22 容器扩展](./impls/container.md)
     * [5.23 页面扩展](./impls/page.md)

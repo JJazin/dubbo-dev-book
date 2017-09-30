@@ -1,31 +1,35 @@
-##### 1. 扩展说明
+# 日志适配扩展
+
+## 扩展说明
 
 日志输出适配扩展点。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.common.logger.LoggerAdapter`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:application logger="xxx" />
 ```
 
+或者：
+
 ```sh
 -Ddubbo:application.logger=xxx
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.common.logger.slf4j.Slf4jLoggerAdapter`
 * `com.alibaba.dubbo.common.logger.jcl.JclLoggerAdapter`
 * `com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter`
 * `com.alibaba.dubbo.common.logger.jdk.JdkLoggerAdapter`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -40,7 +44,7 @@ src
                 |-com.alibaba.dubbo.common.logger.LoggerAdapter (纯文本文件，内容为：xxx=com.xxx.XxxLoggerAdapter)
 ```
 
-XxxLoggerAdapter.java
+XxxLoggerAdapter.java：
 
 ```java
 package com.xxx;
@@ -54,7 +58,7 @@ public class XxxLoggerAdapter implements LoggerAdapter {
 }
 ```
 
-XxxLogger.java
+XxxLogger.java：
 
 ```java
 package com.xxx;
@@ -72,8 +76,8 @@ public class XxxLogger implements Logger {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.common.logger.LoggerAdapter
+META-INF/dubbo/com.alibaba.dubbo.common.logger.LoggerAdapter：
 
-```
+```properties
 xxx=com.xxx.XxxLoggerAdapter
 ```

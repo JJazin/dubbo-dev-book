@@ -1,26 +1,29 @@
-##### 1. 扩展说明
+# 组网扩展
+
+## 扩展说明
 
 对等网络节点组网器。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.remoting.p2p.Networker`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:protocol networker="xxx" />
-<dubbo:provider networker="xxx" /> <!-- 缺省值设置，当<dubbo:protocol>没有配置networker属性时，使用此配置 -->
+<!-- 缺省值设置，当<dubbo:protocol>没有配置networker属性时，使用此配置 -->
+<dubbo:provider networker="xxx" /> 
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 * `com.alibaba.dubbo.remoting.p2p.support.MulticastNetworker`
 * `com.alibaba.dubbo.remoting.p2p.support.FileNetworker`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -35,7 +38,7 @@ src
                 |-com.alibaba.dubbo.remoting.p2p.Networker (纯文本文件，内容为：xxx=com.xxx.XxxNetworker)
 ```
 
-XxxNetworker.java
+XxxNetworker.java：
 
 ```java
 package com.xxx;
@@ -49,8 +52,8 @@ public class XxxNetworker implements Networker {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.remoting.p2p.Networker
+META-INF/dubbo/com.alibaba.dubbo.remoting.p2p.Networker：
 
-```
+```properties
 xxx=com.xxx.XxxNetworker
 ```

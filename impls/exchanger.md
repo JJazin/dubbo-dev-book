@@ -1,27 +1,29 @@
-##### 1. 扩展说明
+# 信息交换扩展
+## 扩展说明
 
-基于传输层之上，实现Request-Response信息交换语义。
+基于传输层之上，实现 Request-Response 信息交换语义。
 
-##### 2. 扩展接口
+## 扩展接口
 
 * `com.alibaba.dubbo.remoting.exchange.Exchanger`
 * `com.alibaba.dubbo.remoting.exchange.ExchangeServer`
 * `com.alibaba.dubbo.remoting.exchange.ExchangeClient`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
 <dubbo:protocol exchanger="xxx" />
-<dubbo:provider exchanger="xxx" /> <!-- 缺省值设置，当<dubbo:protocol>没有配置exchanger属性时，使用此配置 -->
+<!-- 缺省值设置，当<dubbo:protocol>没有配置exchanger属性时，使用此配置 -->
+<dubbo:provider exchanger="xxx" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 `com.alibaba.dubbo.remoting.exchange.exchanger.HeaderExchanger`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -38,7 +40,7 @@ src
                 |-com.alibaba.dubbo.remoting.exchange.Exchanger (纯文本文件，内容为：xxx=com.xxx.XxxExchanger)
 ```
 
-XxxExchanger.java
+XxxExchanger.java：
 
 ```java
 package com.xxx;
@@ -56,7 +58,7 @@ public class XxxExchanger implements Exchanger {
 }
 ```
 
-XxxExchangeServer.java
+XxxExchangeServer.java：
 
 ```java
 
@@ -69,7 +71,7 @@ public class XxxExchangeServer impelements ExchangeServer {
 }
 ```
 
-XxxExchangeClient.java
+XxxExchangeClient.java：
 
 ```java
 package com.xxx;
@@ -81,8 +83,8 @@ public class XxxExchangeClient impelments ExchangeClient {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.remoting.exchange.Exchanger
+META-INF/dubbo/com.alibaba.dubbo.remoting.exchange.Exchanger：
 
-```
+```properties
 xxx=com.xxx.XxxExchanger
 ```

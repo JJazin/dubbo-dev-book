@@ -1,25 +1,29 @@
-##### 1. 扩展说明
+# 暴露监听扩展
+
+## 扩展说明
 
 当有服务暴露时，触发该事件。
 
-##### 2. 扩展接口
+## 扩展接口
 
 `com.alibaba.dubbo.rpc.ExporterListener`
 
-##### 3. 扩展配置
+## 扩展配置
 
 ```xml
-<dubbo:service listener="xxx,yyy" /> <!-- 暴露服务监听 -->
-<dubbo:provider listener="xxx,yyy" /> <!-- 暴露服务缺省监听器 -->
+<!-- 暴露服务监听 -->
+<dubbo:service listener="xxx,yyy" />
+<!-- 暴露服务缺省监听器 -->
+<dubbo:provider listener="xxx,yyy" />
 ```
 
-##### 4. 已知扩展
+## 已知扩展
 
 `com.alibaba.dubbo.registry.directory.RegistryExporterListener`
 
-##### 5. 扩展示例
+## 扩展示例
 
-Maven项目结构
+Maven 项目结构：
 
 ```
 src
@@ -34,7 +38,7 @@ src
                 |-com.alibaba.dubbo.rpc.ExporterListener (纯文本文件，内容为：xxx=com.xxx.XxxExporterListener)
 ```
 
-XxxExporterListener.java
+XxxExporterListener.java：
 
 ```java
 package com.xxx;
@@ -54,9 +58,9 @@ public class XxxExporterListener implements ExporterListener {
 }
 ```
 
-META-INF/dubbo/com.alibaba.dubbo.rpc.ExporterListener
+META-INF/dubbo/com.alibaba.dubbo.rpc.ExporterListener：
 
-```
+```properties
 xxx=com.xxx.XxxExporterListener
 ```
 
