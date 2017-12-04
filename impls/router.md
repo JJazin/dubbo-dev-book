@@ -9,14 +9,6 @@
 * `com.alibaba.dubbo.rpc.cluster.RouterFactory`
 * `com.alibaba.dubbo.rpc.cluster.Router`
 
-## 扩展配置
-
-```xml
-<dubbo:protocol router="xxx" />
-<!-- 缺省值设置，当<dubbo:protocol>没有配置loadbalance时，使用此配置 -->
-<dubbo:provider router="xxx" />
-```
-
 ## 已知扩展
 
 * `com.alibaba.dubbo.rpc.cluster.router.ScriptRouterFactory`
@@ -62,3 +54,5 @@ META-INF/dubbo/com.alibaba.dubbo.rpc.cluster.RouterFactory：
 ```properties
 xxx=com.xxx.XxxRouterFactory
 ```
+
+
